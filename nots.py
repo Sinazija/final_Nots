@@ -133,7 +133,7 @@ class NoteManager:
         found = False
         for tag, notes in self.notes.items():
             for index, note in enumerate(notes):
-                if keyword.lower() in note.tags:
+                if keyword.lower() in note.tags.lower():
                     del notes[index]
                     found = True
                     break
