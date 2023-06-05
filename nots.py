@@ -50,11 +50,11 @@ class NoteManager:
                 key: [{'note': note.note, 'tags': note.tags} for note in value]
                 for key, value in self.notes.items()
             }
-            json.dump(data, file, ensure_ascii=False, default=Note.default)
+            json.dump(data, file, default=Note.default, ensure_ascii=False, indent=2, separators=(',', ': '))
 
     def load_notes(self):
         if os.path.exists('notes.json'):
-            with open('notes.json', 'r') as file:
+            with open('notes.json', 'r', encoding='utf-8') as file:
                 data = json.load(file)
                 self.notes = {
                     key: [Note(note['note'], note['tags']) for note in value]
